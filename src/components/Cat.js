@@ -1,4 +1,4 @@
-import React from "react";
+import {React, PropTypes} from "react";
 
 const Cat = ({name, chipNum}) => {
   return (
@@ -9,5 +9,10 @@ const Cat = ({name, chipNum}) => {
     </li>
   );
 }
+
+Cat.propTypes = {
+  name: PropTypes.string.isRequired,
+  chipNum: PropTypes.string.isRequired
+};
 
 export default Cat;
