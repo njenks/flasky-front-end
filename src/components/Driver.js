@@ -1,22 +1,26 @@
 import "./Driver.css";
+import PropTypes from "prop-types";
 
-function Driver() {
-  const tsunoda = {
-    name: "Yuki Tsunoda",
-    team: "Alpha Tauri",
-    country: "Japan",
-    handsome: true,
-  };
+const Driver = (props) => {
   return (
     <div>
-      <h2 className="driver__name">{tsunoda.name}</h2>
+      <h2 className="driver__name">{props.name}</h2>
       <ul>
-        <li>Team: {tsunoda.team}</li>
-        <li>Country: {tsunoda.country}</li>
-        <li>Handsome: {tsunoda.handsome ? "Hella fine" : "Not for me"}</li>
+        <li>Team: {props.team}</li>
+        <li>Country: {props.country}</li>
+        <li>Handsome: {props.handsome ? "Hella fine" : "Not for me"}</li>
       </ul>
     </div>
   );
+};
+
+Driver.propTypes = {
+  name: PropTypes.string.isRequired,
+  team: PropTypes.string,
+  country: PropTypes.string.isRequired,
+  handsome: PropTypes.bool,
+  id: PropTypes.number.isRequired
 }
+
 
 export default Driver;
