@@ -1,0 +1,7 @@
+main ul.cat__list {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

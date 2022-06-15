@@ -17,26 +17,31 @@ const catData = [
   {
     name: "Loki",
     chipNumber: "3454353",
+  },
+  {
+    name: "Elvis",
+    chipNumber: "",
   }
 ];
 
-const dog_data = [
-  {
-    name: "Wishbone",
-    favoriteToy: "Squeaker",
-    chipNumber: "82373",
-  },
-  {
-    name: "Appa",
-    favoriteToy: "Ball",
-    chipNumber: "29238",
-  },
-  {
-    name: "Jimminy",
-    favoriteToy: "Bone",
-    chipNumber: "72902",
-  }
-];
+// dog data object to use for roundtable activity
+// const dogData = [
+//   {
+//     name: "Wishbone",
+//     favoriteToy: "Squeaker",
+//     chipNumber: "82373",
+//   },
+//   {
+//     name: "Appa",
+//     favoriteToy: "Ball",
+//     chipNumber: "29238",
+//   },
+//   {
+//     name: "Jimminy",
+//     favoriteToy: "Bone",
+//     chipNumber: "72902",
+//   }
+// ];
 
 
 function App() {
