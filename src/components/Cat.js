@@ -1,10 +1,10 @@
 import React from "react";
 
-const Cat = () => {
+const Cat = ({name, chipNum}) => {
   return (
     <li>
-      <h3>A Soon to be Named Cat</h3>
-      <span>Chip #: </span>
+      <h3>{name}</h3>
+      <span>Chip #: {chipNum}</span>
       <button>add chip</button>
     </li>
   );
