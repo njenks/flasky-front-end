@@ -5,7 +5,7 @@ const DriverList = (props) =>{
     const driverComponents = props.drivers.map((driver) => {
         return (
             <Driver
-                id={driver.id}
+                key={driver.id}
                 name={driver.name}
                 team={driver.team}
                 country={driver.country}

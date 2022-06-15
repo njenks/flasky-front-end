@@ -18,8 +18,7 @@ Driver.propTypes = {
   name: PropTypes.string.isRequired,
   team: PropTypes.string,
   country: PropTypes.string.isRequired,
-  handsome: PropTypes.bool,
-  id: PropTypes.number.isRequired
+  handsome: PropTypes.bool
 }
 
 

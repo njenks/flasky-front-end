@@ -13,7 +13,6 @@ function App() {
     {
       id: 1,
       name: "Carlos Sainz",
-      team: null,
       country: "Spain"
     }
   ];
