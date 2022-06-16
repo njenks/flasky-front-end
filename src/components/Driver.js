@@ -14,9 +14,9 @@ const Driver = (props) => {
     }
   };
 
-  const changeCountryName = (event) => {
-    setCountry(event.target.value);
-  };
+  // const changeCountryName = (event) => {
+  //   setCountry(event.target.value);
+  // };
   return (
     <div>
       <h2 className="driver__name">{props.name}</h2>
@@ -26,7 +26,11 @@ const Driver = (props) => {
         <li>Handsome: {handsome ? "Hella fine" : "Not for me"}</li>
         <button onClick={flipHandsomeness}>Change Handsomeness</button>
         Set Country
-        <input type="text" value={country} onChange={changeCountryName}></input>
+        <input
+          type="text"
+          value={country}
+          onChange={(event) => setCountry(event.target.value)}
+        ></input>
       </ul>
     </div>
   );

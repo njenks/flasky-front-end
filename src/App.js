@@ -18,6 +18,12 @@ function App() {
       handsome: true,
     },
   ];
+  /*
+  class Vendor
+    ......
+
+  auberon = Vendor(price=6)
+  */
   return (
     <div>
       <DriverList drivers={drivers} />
