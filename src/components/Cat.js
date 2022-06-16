@@ -1,40 +1,53 @@
 import "./Cat.css";
 import PropTypes from "prop-types";
-import {useState} from "react";
 
-const Cat = (props) => {
+const Cat = ({
+  id,
+  name,
+  saying,
+  color,
+  age,
+  setCatAgeCallback,
+  deleteCatCallback,
+  setCatSayingCallback,
+}) => {
+  const catName = name;
+  const catColor = color;
+  const catSaying = saying;
 
-    const [catAge, setCatAge] = useState(props.age);
-    const [catSaying, setCatSaying] = useState(props.saying);
-
-    const catName = props.name;
-    const catColor = props.color;
-    const makeCatOlder = () => {
-        setCatAge(catAge + 1);
-    };
-
-    const changeCatSaying = (event) => {
-        let newSaying = event.target.value;
-        if(newSaying === "") {
-            newSaying = "Hello!"
-        }
-        setCatSaying(newSaying)
+  const changeCatSaying = (event, id) => {
+    let newSaying = event.target.value;
+    if (newSaying === "") {
+      newSaying = "Hello!";
     }
-    return (
+    setCatSayingCallback(newSaying, id);
+  };
+
+  return (
     <div className="rainbow-box">
       <h3> {catName} </h3>
-      <p> {catSaying} </p>
-      <p> Change Saying: <input type="text" onChange={changeCatSaying} /></p>
-      <p> {catAge} <button onClick={makeCatOlder}>🙀</button></p>
+      {catSaying}
+      <p>
+        {" "}
+        Change Saying:{" "}
+        <input type="text" onChange={(event) => changeCatSaying(event, id)} />
+      </p>
+      <p>
+        {" "}
+        {age} <button onClick={() => setCatAgeCallback(id)}>🙀</button>
+      </p>
       <p> {catColor}</p>
+      <button onClick={() => deleteCatCallback(id)}>Delete Cat</button>
     </div>
   );
 };
 Cat.propTypes = {
-    name:PropTypes.string.isRequired,
-    saying:PropTypes.string.isRequired,
-    color:PropTypes.string.isRequired,
-    age:PropTypes.number.isRequired
-}
+  name: PropTypes.string.isRequired,
+  saying: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  setCatAgeCallback: PropTypes.func.isRequired,
+  deleteCatCallback: PropTypes.func.isRequired,
+};
 
 export default Cat;
