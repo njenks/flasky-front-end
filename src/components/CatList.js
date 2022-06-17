@@ -3,24 +3,34 @@ import Cat from "./Cat";
 import "./CatList.css";
 import PropTypes from 'prop-types';
 
-export const CatList = ({cats}) => {
+const CatList = (props) => {
+  //props is going to be an array of objects and a function
+  const catComponentsArray = props.catData.map((cat) => {
+    return (
+      <Cat
+      //id can be used for key and id props because id is unique to each cat object
+      key={cat.id}
+      id={cat.id}
+      color={cat.color}
+      personality={cat.personality}
+      name={cat.name}
+      onRemove={props.onRemove}
+      caretaker={cat.caretaker}
+      />
+    )
+  })
   return (
-    <ul>
-      <h2>Cat Count: 5</h2>
-      {cats.map(cat => {
-        return <Cat name={cat.name} chipNum={cat.chipNumber} />
-      })}
-    </ul>
+    <section>
+      <h1>Our Cats!</h1>
+      <h2>Cat Count: {props.catData.length}</h2>
+      <ul>{catComponentsArray}</ul>
+    </section>
   );
 }
 
 CatList.propTypes = {
-  cats: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      chipNumber: PropTypes.string.isRequired
-    })
-  ).isRequired
+  catData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRemove: PropTypes.func.isRequired
 };
 
 export default CatList;
