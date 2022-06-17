@@ -1,47 +1,35 @@
 import './App.css';
 import { CatList } from './components/CatList';
+import catData from "./data/catData.json";
 
-const catData = [
-  {
-    name: "Whiskers",
-    chipNumber: "13579",
-  },
-  {
-    name: "Fang",
-    chipNumber: "82672",
-  },
-  {
-    name: "Beetle",
-    chipNumber: "02468",
-  },
-  {
-    name: "Loki",
-    chipNumber: "3454353",
-  },
-  {
-    name: "Elvis",
-    chipNumber: "",
-  }
+// Moved Cat and Dog data into 'data' folder
+
+const kPersonalities = [
+  "Skittish",
+  "Outgoing",
+  "Confident",
+  "Spontaneous",
+  "Impulsive",
+  "Friendly",
+  "Adventurous",
+  "Relaxed",
+  "Gentle",
+  "Playful",
+  "Affectionate",
+  "Curious",
+  "Peaceful",
+  "Docile",
+  "Sweet",
+  "Active",
+  "Sociable",
+  "Purposeful",
+  "Talkative",
+  "Determined",
+  "Vocal",
+  "Loving",
+  "Inquisitive",
 ];
 
-// dog data object to use for roundtable activity
-// const dogData = [
-//   {
-//     name: "Wishbone",
-//     favoriteToy: "Squeaker",
-//     chipNumber: "82373",
-//   },
-//   {
-//     name: "Appa",
-//     favoriteToy: "Ball",
-//     chipNumber: "29238",
-//   },
-//   {
-//     name: "Jimminy",
-//     favoriteToy: "Bone",
-//     chipNumber: "72902",
-//   }
-// ];
 
 
 function App() {
