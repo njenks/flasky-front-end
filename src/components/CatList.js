@@ -5,7 +5,14 @@ import PropTypes from "prop-types";
 const CatList = (props) => {
   const catComponents = props.catData.map((cat) => {
     return (
-      <Cat name={cat.name} caretaker={cat.caretaker} petCount={cat.petCount} />
+      <Cat key={cat.id}
+        id={cat.id}
+        name={cat.name} 
+        caretaker={cat.caretaker} 
+        personality={cat.personality} 
+        beACat={props.beACat}
+        onRemove={props.onRemove}
+        />
     );
   });
 
@@ -19,6 +26,8 @@ const CatList = (props) => {
 
 CatList.propTypes = {
   catData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  beACat: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };
 
 export default CatList;
