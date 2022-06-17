@@ -2,17 +2,17 @@ import "./CatList.css";
 import Cat from "./Cat.js";
 import PropTypes from "prop-types";
 
-const CatList = ({ catData, setCatAgeCallback }) => {
+const CatList = (props) => {
   //console.log("catlist props: ", props)
   //const catData = props.catData;
-  console.log("catData: ", catData);
+  console.log("catData: ", props.catData);
   //const catComponents = [];
 
   /*for(const cat of catData) {
         catComponents.push(<Cat key={cat.id} id={cat.id} name={cat.name} saying={cat.saying} 
             age={cat.age} color={cat.color} />);
     }*/
-  const catComponents = catData.map((cat) => (
+  const catComponents = props.catData.map((cat) => (
     <Cat
       key={cat.id}
       id={cat.id}
@@ -21,7 +21,7 @@ const CatList = ({ catData, setCatAgeCallback }) => {
       s
       age={cat.age}
       color={cat.color}
-      setCatAgeCallback={setCatAgeCallback}
+      setCatAgeCallback={props.setCatAgeCallback}
     />
   ));
 

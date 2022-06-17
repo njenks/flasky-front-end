@@ -10,10 +10,10 @@ const Cat = (props) => {
   const catName = props.name;
   const catColor = props.color;
 
-  //   const makeCatOlder = () => {
-  //     //setCatAge(catAge + 1);
-  //     props.setCatAgeCallback(props.id);
-  //   };
+  const makeCatOlder = () => {
+    //setCatAge(catAge + 1);
+    props.setCatAgeCallback(props.id);
+  };
 
   const changeCatSaying = (event) => {
     let newSaying = event.target.value;
@@ -33,7 +33,9 @@ const Cat = (props) => {
       <p>
         {" "}
         {catAge}{" "}
-        <button onClick={() => props.setCatAgeCallback(props.id)}>🙀</button>
+        {/* <button onClick={() => props.setCatAgeCallback(props.id)}>🙀</button> */}
+        {<button onClick={makeCatOlder}>🙀</button>}
+        {<button>Delete 🙀</button>}
       </p>
       <p> {catColor}</p>
     </div>

@@ -28,6 +28,10 @@ function App() {
     setPlaceholder(placeholder + "!");
   };
 
+  const deleteCat = (id) => {
+    console.log("delete", id);
+  };
+
   const setCatAge = (id) => {
     console.log("inside setCatAge", id);
     // create a copy of cats
@@ -40,7 +44,7 @@ function App() {
       }
     }
 
-    // call setCats to update array
+    // call setCats to update cats array
     setCats(olderCats);
   };
 
@@ -51,7 +55,7 @@ function App() {
       </header>
       <button onClick={handleAppClick}>{placeholder}</button>
       <main>
-        <CatList catData={cats} setCatAgeCallback={setCatAge} />
+        <CatList catData={cats} setCatAgeCallback={setCatAge} deleteCatCallback={deleteCat}/>
         {/* <CatList catData={catData2} /> */}
       </main>
     </div>
