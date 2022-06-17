@@ -3,34 +3,29 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 const Driver = (props) => {
-  const [handsome, setHandsome] = useState(props.handsome);
-  const [country, setCountry] = useState(props.country);
-  const flipHandsomeness = () => {
-    if (handsome) {
-      //handsome = false; // NO
-      setHandsome(false);
-    } else {
-      setHandsome(true);
-    }
+  // I have access to props.handsomeCallback
+  const flipMyHandsome = () => {
+    props.handsomeCallback(props.id);
   };
 
-  // const changeCountryName = (event) => {
-  //   setCountry(event.target.value);
-  // };
+  const deleteMe = () => {
+    props.deleteCallback(props.id);
+  };
   return (
     <div>
       <h2 className="driver__name">{props.name}</h2>
       <ul>
         <li>Team: {props.team}</li>
-        <li>Country: {country}</li>
-        <li>Handsome: {handsome ? "Hella fine" : "Not for me"}</li>
-        <button onClick={flipHandsomeness}>Change Handsomeness</button>
-        Set Country
+        <li>Country: {props.country}</li>
+        <li>Handsome: {props.handsome ? "Hella fine" : "Not for me"}</li>
+        <button onClick={flipMyHandsome}>Change Handsomeness</button>
+        <button onClick={deleteMe}>Delete</button>
+        {/* Set Country
         <input
           type="text"
           value={country}
           onChange={(event) => setCountry(event.target.value)}
-        ></input>
+        ></input> */}
       </ul>
     </div>
   );

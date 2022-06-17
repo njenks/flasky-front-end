@@ -1,8 +1,8 @@
-import Driver from "./components/Driver";
+import { useState } from "react";
 import DriverList from "./components/DriverList";
 
 function App() {
-  const drivers = [
+  const [drivers, setDrivers] = useState([
     {
       id: 0,
       name: "Yuki Tsunoda",
@@ -17,7 +17,35 @@ function App() {
       country: "Spain",
       handsome: true,
     },
-  ];
+  ]);
+
+  const flipHandsome = (id) => {
+    // const newDrivers = [];
+    // for (const driver of drivers) {
+    //   if (driver.id === id) {
+    //     driver.handsome = !driver.handsome;
+    //   }
+    //   newDrivers.push(driver);
+    // }
+    // setDrivers(newDrivers);
+    for (const driver of drivers) {
+      if (driver.id === id) {
+        driver.handsome = !driver.handsome;
+      }
+    }
+    const newDrivers = [...drivers];
+    setDrivers(newDrivers);
+  };
+
+  const deleteDriver = (id) => {
+    const newDrivers = [];
+    for (const driver of drivers) {
+      if (driver.id !== id) {
+        newDrivers.push(driver);
+      }
+    }
+    setDrivers(newDrivers);
+  };
   /*
   class Vendor
     ......
@@ -26,7 +54,11 @@ function App() {
   */
   return (
     <div>
-      <DriverList drivers={drivers} />
+      <DriverList
+        drivers={drivers}
+        handsomeCallback={flipHandsome}
+        deleteCallback={deleteDriver}
+      />
     </div>
   );
 }
