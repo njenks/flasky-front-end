@@ -1,0 +1,82 @@
+[
+  {
+    "caretaker": "Santos Pittman",
+    "color": "Mackerel tabby",
+    "id": 1,
+    "name": "Neko",
+    "personality": "Skittish",
+    "petCount": 192
+  },
+  {
+    "caretaker": "Santos Pittman",
+    "color": "Brown",
+    "id": 2,
+    "name": "Lucy",
+    "personality": "Outgoing",
+    "petCount": 349
+  },
+  {
+    "caretaker": "Brendan Valentine",
+    "color": "Cream",
+    "id": 3,
+    "name": "Thor",
+    "personality": "Talkative",
+    "petCount": 363
+  },
+  {
+    "caretaker": "Issac Nguyen",
+    "color": "Classic tabby",
+    "id": 4,
+    "name": "Pepper",
+    "personality": "Inquisitive",
+    "petCount": 90
+  },
+  {
+    "caretaker": "Leticia Graves",
+    "color": "Brown",
+    "id": 5,
+    "name": "Abby",
+    "personality": "Sweet",
+    "petCount": 477
+  },
+  {
+    "caretaker": "Angelica Sanford",
+    "color": "Red",
+    "id": 6,
+    "name": "Lucky",
+    "personality": "Adventurous",
+    "petCount": 379
+  },
+  {
+    "caretaker": "Ben Cooper",
+    "color": "Cinnamon",
+    "id": 7,
+    "name": "Belle",
+    "personality": "Vocal",
+    "petCount": 64
+  },
+  {
+    "caretaker": "Ben Cooper",
+    "color": "Grey",
+    "id": 8,
+    "name": "Piper",
+    "personality": "Curious",
+    "petCount": 222
+  },
+  {
+    "caretaker": "Chasity Copeland",
+    "color": "Spotted tabby",
+    "id": 9,
+    "name": "Salem",
+    "personality": "Curious",
+    "petCount": 134
+  },
+  {
+    "caretaker": "Jaquan Hebert",
+    "color": "Blue",
+    "id": 10,
+    "name": "Riley",
+    "personality": "Friendly",
+    "petCount": 68
+  }
+]
