@@ -22,6 +22,7 @@ const CatList = (props) => {
       age={cat.age}
       color={cat.color}
       setCatAgeCallback={props.setCatAgeCallback}
+      deleteCatCallback={props.deleteCatCallback}
     />
   ));
 
@@ -36,6 +37,7 @@ const CatList = (props) => {
 CatList.propTypes = {
   catData: PropTypes.array.isRequired,
   setCatAgeCallback: PropTypes.func.isRequired,
+  deleteCatCallback: PropTypes.func.isRequired,
 };
 
 export default CatList;

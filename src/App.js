@@ -30,6 +30,8 @@ function App() {
 
   const deleteCat = (id) => {
     console.log("delete", id);
+    const newCats = cats.filter((cat) => cat.id !== id);
+    setCats(newCats);
   };
 
   const setCatAge = (id) => {
@@ -55,7 +57,11 @@ function App() {
       </header>
       <button onClick={handleAppClick}>{placeholder}</button>
       <main>
-        <CatList catData={cats} setCatAgeCallback={setCatAge} deleteCatCallback={deleteCat}/>
+        <CatList
+          catData={cats}
+          setCatAgeCallback={setCatAge}
+          deleteCatCallback={deleteCat}
+        />
         {/* <CatList catData={catData2} /> */}
       </main>
     </div>

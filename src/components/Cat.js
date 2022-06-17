@@ -22,6 +22,11 @@ const Cat = (props) => {
     }
     setCatSaying(newSaying);
   };
+
+  const deleteCat = () => {
+    props.deleteCatCallback(props.id);
+  };
+
   return (
     <div className="rainbow-box">
       <h3> {catName} </h3>
@@ -35,7 +40,8 @@ const Cat = (props) => {
         {catAge}{" "}
         {/* <button onClick={() => props.setCatAgeCallback(props.id)}>🙀</button> */}
         {<button onClick={makeCatOlder}>🙀</button>}
-        {<button>Delete 🙀</button>}
+        {/* {<button onClick={deleteCat}>Delete 🙀</button>} */}
+        <button onClick={() => props.deleteCatCallback(props.id)}>DELETE CAT</button>
       </p>
       <p> {catColor}</p>
     </div>
@@ -47,6 +53,7 @@ Cat.propTypes = {
   color: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,
   setCatAgeCallback: PropTypes.func.isRequired,
+  deleteCatCallback: PropTypes.func.isRequired,
 };
 
 export default Cat;
