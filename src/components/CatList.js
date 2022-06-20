@@ -26,7 +26,7 @@ const CatList = (props) => {
         <div>Cat count: {props.catData.length}</div>
         <div>Total pets: {props.totalPets}</div>
       </h2>
-      <ul>{catComponents}</ul>;
+      <ul>{catComponents}</ul>
     </section>
   );
 };
