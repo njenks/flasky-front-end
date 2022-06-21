@@ -5,8 +5,6 @@ import catData from "./data/catData.json";
 
 // Moved Cat and Dog data into 'data' folder
 
-
-
 function App() {
 
   const [cats, setCats] = useState(catData);
