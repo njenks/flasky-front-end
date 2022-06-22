@@ -1,31 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CatList from "./components/CatList";
-import catDataJson from './data/catData.json';
+import axios from "axios";
+// import catDataJson from './data/catData.json';
+
+const kBaseUrl = 'http://localhost:5000';
+
+const catApiToJson = cat => {
+  const { caretaker, color, id, name, personality, pet_count: petCount } = cat;
+  return { caretaker, color, id, name, personality, petCount };
+};
+
+const getCats = () => {
+  return axios.get(`${kBaseUrl}/cats`) // promise1
+  .then(response => {
+    return response.data.map(catApiToJson);
+  })  // promise 2
+  .catch(err => {
+    console.log(err);
+  })  // promise 3
+};
+
+const petCat = id => {
+  return axios.patch(`${kBaseUrl}/cats/${id}/pet`) // promise1
+  .then(response => {
+    return catApiToJson(response.data);
+  })  // promise 2
+  .catch(err => {
+    console.log(err);
+  })  // promise 3
+};
+
+const removeCat = id => {
+  return axios.delete(`${kBaseUrl}/cats/${id}`) // promise1
+  .catch(err => {
+    console.log(err);
+  })  // promise 3
+};
+
 
 function App() {
-  const [ catData, setCatData ] = useState(catDataJson);
-  
-  const petCat = (id) => {
-    // console.log(`cat id ${id} says purr!`);
-    const newCatData = catData.map(cat => {
-      if (cat.id === id) {
-        return { ...cat, petCount: cat.petCount + 1 }
-      } else {
-        return cat;
-      }
-    });
+  const [ catData, setCatData ] = useState([]);
 
-    setCatData(newCatData);
+  const updateCats = () => {
+    getCats()
+    .then(cats => {
+      setCatData(cats);
+    })
+  };
+
+  useEffect(() => {
+    updateCats();
+  }, []);
+  
+  const updateCat = (id) => {
+    // console.log(`cat id ${id} says purr!`);
+    petCat(id)
+    .then(updatedCat => {
+      setCatData(oldData => {
+        return oldData.map(cat => {
+          if (cat.id === id) {
+            return updatedCat;
+          } else {
+            return cat;
+          }
+        });  
+      });
+    })
   };
 
   const unregisterCat = id => {
     // console.log(`unregister cat id ${id}`)
-    const newCatData = catData.filter(cat => {
-      return cat.id !== id;
+    removeCat(id).then(cat => {  
+      setCatData(oldData => {
+        return oldData.filter(cat => {
+          return cat.id !== id;
+        });
+      });
     });
-
-    setCatData(newCatData);
   };
 
   const totalPets = catData.reduce((total, cat) => {
@@ -40,7 +92,7 @@ function App() {
       </h1>
       <CatList 
         catData={catData} 
-        onPetCat={petCat} 
+        onPetCat={updateCat} 
         onUnregister={unregisterCat} 
         />
     </main>
