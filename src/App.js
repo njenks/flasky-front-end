@@ -1,57 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DriverList from "./components/DriverList";
+import axios from "axios";
+
+const URL = 'http://localhost:5000/drivers';
 
 function App() {
-  const [drivers, setDrivers] = useState([
-    {
-      id: 0,
-      name: "Yuki Tsunoda",
-      team: "Alpha Tauri",
-      country: "Japan",
-      handsome: true,
-    },
-    {
-      id: 1,
-      name: "Carlos Sainz",
-      team: "Ferrari",
-      country: "Spain",
-      handsome: true,
-    },
-  ]);
+  const [drivers, setDrivers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        const newDrivers = res.data.map((driver) => {
+          return {
+            id: driver.id,
+            name: driver.name,
+            country: driver.country,
+            team: driver.team,
+            cars: driver.cars,
+            handsome: driver.handsome
+          };
+        });
+        setDrivers(newDrivers);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
 
   const flipHandsome = (id) => {
-    // const newDrivers = [];
-    // for (const driver of drivers) {
-    //   if (driver.id === id) {
-    //     driver.handsome = !driver.handsome;
-    //   }
-    //   newDrivers.push(driver);
-    // }
-    // setDrivers(newDrivers);
     for (const driver of drivers) {
       if (driver.id === id) {
         driver.handsome = !driver.handsome;
       }
     }
     const newDrivers = [...drivers];
-    setDrivers(newDrivers);
+    axios
+          .patch(`${URL}/${id}/fliphandsome`)
+          .then(() => setDrivers(newDrivers))
+          .catch((err) => console.log(err));
   };
 
   const deleteDriver = (id) => {
-    const newDrivers = [];
-    for (const driver of drivers) {
-      if (driver.id !== id) {
-        newDrivers.push(driver);
-      }
-    }
-    setDrivers(newDrivers);
+    axios
+      .delete(`${URL}/${id}`)
+      .then(() => {
+        const newDrivers = drivers.filter((driver) => driver.id !== id);
+        setDrivers(newDrivers);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  /*
-  class Vendor
-    ......
-
-  auberon = Vendor(price=6)
-  */
+ 
+  
   return (
     <div>
       <DriverList

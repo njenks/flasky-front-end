@@ -11,6 +11,7 @@ const DriverList = (props) => {
         name={driver.name}
         team={driver.team}
         country={driver.country}
+        cars={driver.cars}
         handsome={driver.handsome}
         handsomeCallback={props.handsomeCallback}
         deleteCallback={props.deleteCallback}
